@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+<head>
+<link rel="stylesheet" href="mystyle.css">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+   type="text/javascript"
+  crossorigin="anonymous"></script>
+<script src="assessmentScript.js"></script>
+</head>
+
+<body onload="main();">
+
+<div id="content">
+<!-- https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects#sending_files_using_a_formdata_object -->
+<!-- entweder hier oder in js einen request ans backend (spring boot, python flask, php...) -->
+<form id="regForm" action="/action_page.py">
+  <h1>Assessment 1:</h1>
+  <!-- Zukuenftig soll das Formular serverseitig aus dem Assessment-json generiert werden, damit der Client die Daten nicht kennen muss (Datenkapselung, separation of concerns...) -->
+  <div class="tab">Wie geht es dir?
+    <p><input placeholder="Antwort..." oninput="this.className = ''" name="frage0" maxlength="10"></p>
+  </div>
+  
+  <div class="tab">Auf welchem Kontinent liegt Kolumbien:
+	  <div>
+		<input type="radio" id="afrika" name="frage1" value="0"
+				 checked>
+		  <label for="afrika">Afrika</label>
+		</div>
+		<div>
+		  <input type="radio" id="europa" name="frage1" value="1">
+		  <label for="europa">Europa</label>
+		</div>
+		<div>
+		  <input type="radio" id="amerika" name="frage1" value="2">
+		  <label for="amerika">Amerika</label>
+		</div>
+  </div>
+  
+  <div class="tab">Nennen Sie zwei Städte in Deutschland:
+	<input type="checkbox" name="frage2" value="0"/>Bogota<br>
+	<input type="checkbox" name="frage2" value="1"/>Berlin<br>      
+	<input type="checkbox" name="frage2" value="2"/>Hamburg<br>      
+  </div>
+  
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">weiter</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+
+</div> <!--content-->
+
+</body>
+</html>
